@@ -28,14 +28,14 @@ cleanup() {
 declare -a images=(
 	'jc21/rpmbuild-centos6:latest'    # classic docker image
 	'jc21/dnsrouter:latest'           # multiarch docker image
-	'jc21/json-strip-comments:latest' # rebuilt every day
+	'debian:stable-slim'              # rebuilt every day
 )
 
 # copy
 for i in "${images[@]}"
 do
 	echo -e "${YELLOW}Copying ${GREEN}${i}${YELLOW} to local registry...${RESET}"
-	docker compose run --rm --no-deps skopeo copy \
+	docker compose run --rm --no-deps skopeo copy --all \
 		"docker://docker.io/${i}" \
 		"docker://registry.local:5000/${i}" \
 		--dest-tls-verify=false

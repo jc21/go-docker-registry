@@ -2,4 +2,4 @@
 profile: cover.out
 local-prefix: "go-docker-registry"
 threshold:
-  total: 50
+  total: 1

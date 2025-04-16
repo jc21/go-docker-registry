@@ -15,6 +15,7 @@ cleanup() {
 	if [ "$?" -ne 0 ]; then
 		echo -e "${RED}INTEGRATION TESTING FAILED${RESET}"
 	fi
+	rm -f cover.out
 }
 
 go test -tags=integration -json -cover -coverprofile="./cover.out" ./... | tparse

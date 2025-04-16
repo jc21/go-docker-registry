@@ -1,5 +1,3 @@
-@Library('jc21') _
-
 pipeline {
 	options {
 		buildDiscarder(logRotator(numToKeepStr: '5'))
@@ -39,6 +37,7 @@ pipeline {
 		}
 		stage('Publish') {
 			when {
+				branch 'master'
 				not {
 					equals expected: 'UNSTABLE', actual: currentBuild.result
 				}
